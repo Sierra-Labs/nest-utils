@@ -1,5 +1,5 @@
-import { createRouteParamDecorator } from '@nestjs/common';
+import { createParamDecorator, PipeTransform } from '@nestjs/common';
 
-export const RequestProperty = createRouteParamDecorator((data, req) => {
+export const RequestProperty = createParamDecorator((data, req) => {
   return req[data];
 });
