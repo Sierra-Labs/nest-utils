@@ -58,7 +58,10 @@ export class ConfigService<T = any> {
    * reference nested values.
    * @param name The key to look up in the config.
    */
-  public get<R = any>(name: string) {
+  public get<K extends keyof T | string | null | undefined = undefined>(name?: K):
+    K extends null | undefined ? T :
+    K extends keyof T ? T[K] :
+    any {
     return this.config.get(name);
   }
 }
