@@ -32,6 +32,10 @@ TypeOrmModule.forRoot({
 });
 ```
 
+## Config Module based on ConvictJS
+
+See [README here](src/config/README.md) for more details on setup and configuration.
+
 ## NestJS Decorators
 
 > TODO:
