@@ -1,11 +1,14 @@
 {
   "name": "@sierralabs/nest-utils",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Contains Sierra Labs commonly used code like postgres naming strategy, nest decorators, and pipes.",
   "author": "Sierra Labs",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepublish": "npm run build",
     "build": "tsc",
