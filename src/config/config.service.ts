@@ -31,7 +31,11 @@ export class ConfigService<T = any> {
     const configFiles = [];
     if (fs.existsSync(defaultConfig)) configFiles.push(defaultConfig);
     if (fs.existsSync(envConfig)) configFiles.push(envConfig);
-    if (!this.config && isSchemaFileExists) this.config = convict<T>(schemaFile).validate();
+    if (!this.config && isSchemaFileExists) {
+      this.config = convict<T>(schemaFile).validate();
+    } else if (!this.config) {
+      this.config = convict<T>({} as Convict.Schema<T>);
+    }
     this.loadFile(configFiles);
 
   }

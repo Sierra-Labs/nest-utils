@@ -16,6 +16,7 @@ Make sure to have the following installed
 To use the `nest-utils` node module:
 
 ```bash
+$ npm login #make sure you request access to @sierralabs
 $ npm install --save @sierralabs/nest-utils
 ```
 
@@ -40,6 +41,7 @@ See [README here](src/config/README.md) for more details on setup and configurat
 
 > TODO:
 > - Document `request-property.decorator`
+> - Document `replace-relation-type.decorator`
 
 ## NestJS Pipes
 
