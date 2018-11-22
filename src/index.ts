@@ -4,3 +4,4 @@ export * from './decorators';
 export * from './naming-strategy/postgres-naming-strategy';
 export * from './pipes';
 export * from './transformers';
+export * from './interceptors';
