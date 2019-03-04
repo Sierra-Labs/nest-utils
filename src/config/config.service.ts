@@ -13,18 +13,17 @@ import * as path from 'path';
  */
 @Injectable()
 export class ConfigService<T = any> {
-
-  constructor(
-      private readonly config?: Convict.Config<T>
-  ) {
-
+  constructor(private readonly config?: Convict.Config<T>) {
     let convict = convictAlias;
     if (typeof convict !== 'function') convict = Convict; // Jest won't run without this (conflict with Node and Jest)
 
     const schemaFile = path.resolve(process.cwd(), 'config/config-schema.json');
     const env = process.env.NODE_ENV || 'development';
     const defaultConfig = path.resolve(process.cwd(), 'config/config.json');
-    const envConfig = path.resolve(process.cwd(), 'config/config.' + env + '.json');
+    const envConfig = path.resolve(
+      process.cwd(),
+      'config/config.' + env + '.json',
+    );
 
     const isSchemaFileExists = fs.existsSync(schemaFile);
 
@@ -37,7 +36,6 @@ export class ConfigService<T = any> {
       this.config = convict<T>({} as Convict.Schema<T>);
     }
     this.loadFile(configFiles);
-
   }
 
   /**
@@ -62,10 +60,13 @@ export class ConfigService<T = any> {
    * reference nested values.
    * @param name The key to look up in the config.
    */
-  public get<K extends keyof T | string | null | undefined = undefined>(name?: K):
-    K extends null | undefined ? T :
-    K extends keyof T ? T[K] :
-    any {
-    return this.config.get(name);
+  public get<K extends keyof T | string | null | undefined = undefined>(
+    name?: K,
+  ): K extends null | undefined ? T : K extends keyof T ? T[K] : any {
+    if (this.config.has(name)) {
+      return this.config.get(name);
+    } else {
+      return undefined;
+    }
   }
 }
