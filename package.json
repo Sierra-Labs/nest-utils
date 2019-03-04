@@ -1,6 +1,6 @@
 {
   "name": "@sierralabs/nest-utils",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Contains Sierra Labs commonly used code like postgres naming strategy, nest decorators, and pipes.",
   "author": "Sierra Labs",
   "license": "MIT",
