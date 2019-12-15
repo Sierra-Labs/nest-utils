@@ -1,4 +1,4 @@
-import { ExecutionContext, Injectable, NestInterceptor, Logger } from '@nestjs/common';
+import { ExecutionContext, Injectable, NestInterceptor, Logger, CallHandler } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IncomingMessage } from 'http';
@@ -14,7 +14,7 @@ export class RequestInfoInterceptor implements NestInterceptor {
     private readonly containerPropertyName: string = 'metadata'
   ) { }
 
-  intercept(context: ExecutionContext, call$: Observable<any>): Observable<any> {
+  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     const request: IncomingMessage = context.switchToHttp().getRequest();
     try {
       const rootProperty = {};
@@ -25,6 +25,6 @@ export class RequestInfoInterceptor implements NestInterceptor {
     } catch (error) {
       this.logger.error(error);
     }
-    return call$.pipe(map((data) => ({ data })));
+    return next.handle().pipe(map((data) => ({ data })));
   }
 }

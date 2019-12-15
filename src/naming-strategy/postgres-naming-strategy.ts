@@ -75,6 +75,12 @@ export class PostgresNamingStrategy extends DefaultNamingStrategy implements Nam
 
   joinTableColumnName(tableName: string, propertyName: string, columnName?: string): string {
     return snakeCase(tableName + '_' + (columnName ? columnName : propertyName));
-}
+  }
+
+  exclusionConstraintName(tableOrName: Table|string, expression: string): string {
+    const tableName = tableOrName instanceof Table ? tableOrName.name : tableOrName;
+    const replacedTableName = tableName.replace('.', '_');
+    return `${replacedTableName}__${expression}__xcl`;
+  }
 
 }
