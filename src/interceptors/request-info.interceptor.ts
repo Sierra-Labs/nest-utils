@@ -25,6 +25,6 @@ export class RequestInfoInterceptor implements NestInterceptor {
     } catch (error) {
       this.logger.error(error);
     }
-    return next.handle().pipe(map((data) => ({ data })));
+    return next.handle();
   }
 }
