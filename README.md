@@ -2,7 +2,7 @@
 
 ## Description
 
-Contains Sierra Labs commonly used code like postgres naming strategy, nest decorators, and pipes.
+Contains cross-project commonly used NestJS code like postgres naming strategy, nest decorators, and pipes.
 
 ## Requirements
 
@@ -16,8 +16,13 @@ Make sure to have the following installed
 To use the `nest-utils` node module:
 
 ```bash
-$ npm login #make sure you request access to @sierralabs
 $ npm install --save @sierralabs/nest-utils
+```
+
+or with yarn
+
+```bash
+$ yar add @sierralabs/nest-utils
 ```
 
 ## Postgres Naming Strategy
@@ -35,19 +40,14 @@ TypeOrmModule.forRoot({
 
 ## Config Module based on ConvictJS
 
-See [README here](src/config/README.md) for more details on setup and configuration.
+The Config module provides a standard environment specific Config Service to access environment variables. See [README here](src/config/README.md) for more details on setup and configuration.
 
-## NestJS Decorators
-
-> TODO:
-> - Document `request-property.decorator`
-> - Document `replace-relation-type.decorator`
 
 ## NestJS Pipes
 
-> TODO:
-> - Document `parse-entity.pipe`
-> - Document `required.pipe`
+* `ParseBooleanPipe` - used to parse boolean query string params
+* `RequiredPipe` - Enforced a required query string param
+* `ParseEntity` - uses the class-transformer library to convert a JSON body to an TypeORM Entity class instance
 
 ## Contributing
 
