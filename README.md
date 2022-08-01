@@ -22,7 +22,7 @@ $ npm install --save @sierralabs/nest-utils
 or with yarn
 
 ```bash
-$ yar add @sierralabs/nest-utils
+$ yarn add @sierralabs/nest-utils
 ```
 
 ## Postgres Naming Strategy
