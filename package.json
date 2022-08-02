@@ -4,6 +4,11 @@
   "description": "Contains cross-project commonly used NestJS code like postgres naming strategy, nest decorators, and pipes.",
   "author": "Sierra Labs",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sierra-labs/nest-utils.git"
+  },
+  "homepage": "https://github.com/sierra-labs/nest-utils#readme",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
